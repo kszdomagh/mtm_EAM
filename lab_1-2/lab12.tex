@@ -1,0 +1,68 @@
+\documentclass[oneside]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{lastpage}
+
+\geometry{margin=2.5cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{AGH WEAIiIB MTM}
+\fancyhead[R]{\thepage\ /\ \pageref{LastPage}}
+\fancyhead[C]{\today}
+
+\begin{document}
+
+% --- Tabela tytułowa ---
+\begin{table}[h]
+\centering
+\begin{tabular}{lcr}
+sem. V                  & \textbf{Elektroniczna Aparatura Medyczna} & Autorzy:  \\
+Grupa I                 & Raport z Laboratorium                      & Krzysztof Domański (419630)\\
+(pon. 13:15)            &                                           & Igor Głowacz (XXXXXX) \\ 
+                        &                                           & \\
+\hline
+\end{tabular}
+\end{table}
+
+% ===============           TYTUL SPRAWOZDANIA
+\begin{center}
+    {\LARGE \textbf{Wtórnik napięciowy, wzmacniacz nieodwracający, wzmacniacz odwracający}}
+\end{center}
+
+% ===============           TRESC 
+\begin{multicols}{2}
+
+% ===============           ROZDZIAL 1 
+\section{Wtórnik napięcia}
+\subsection{Teoretyczne wzmocnienie układu}
+\subsection{Charakterystyka przejściowa}
+\subsection{Slew Rate}
+\subsection{Wpływ poziomu napięcia zasilania na parametry działania układu}
+
+% ===============           ROZDZIAL 2 
+\newpage
+\section{Wzmacniacz nieodwracający}
+\subsection{Teoretyczne wzmocnienie układu}
+\subsection{Charakterystyka przejściowa}
+\subsection{Charakterystyka częstotliwościowa}
+
+% ===============           ROZDZIAL 3 
+\newpage
+\section{Filtr dolnoprzepustowy (układ całkujący) oparty o wzmacniacz odwracający}
+\subsection{Teoretyczne wzmocnienie układu}
+\subsection{Charakterystyka przejściowa}
+\subsection{Charakterystyka częstotliwościowa}
+\subsection{Przykładowe przebiegi}
+
+% ===============           ROZDZIAL 3 
+\section{Wnioski}
+
+\end{multicols}
+
+\end{document}
