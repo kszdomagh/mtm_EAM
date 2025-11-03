@@ -7,8 +7,10 @@
 \usepackage{geometry}
 \usepackage{multicol}
 \usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{amsmath}
 
-\geometry{margin=2.5cm}
+\geometry{margin=2cm}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -41,12 +43,33 @@ Grupa I                 & Raport z Laboratorium                      & Krzysztof
 % ===============           ROZDZIAL 1 
 \section{Wtórnik napięcia}
 \subsection{Teoretyczne wzmocnienie układu}
+
 \subsection{Charakterystyka przejściowa (DC)}
 Pomiary dla charaktyerystyki DC wtórnika zostały wykonane za pomocą oscyloskopu Rigol DS1102. Użyto funkcji \textit{Avg} w sekcji \textbf{Measure}. Pomiary wykonywano dla czasu próbkowania 50 ns. Do generowania przebiegów użyto Rigol DG812.
 
+\begin{center}
+    \includegraphics[width=0.95\linewidth]{lab_1-2/00_wtornik/DCwtornik.png}
+\end{center}
 
+
+\newcolumn
 \subsection{Slew Rate}
-\subsection{Wpływ poziomu napięcia zasilania na parametry działania układu}
+Pomiar SR został wykonane za pomocą oscyloskopu Rigol DS1102. Do generowania przebiegów użyto Rigol DG812. Dane zapisano w postaci pliku \textit{.csv} na pendrive. Obliczenia wykonano na podstawie uzyskanych danych oraz porównano z wartościami z dokumentacji wzmacniacza.
+
+\begin{center}
+    \includegraphics[width=0.95\linewidth]{lab_1-2/00_wtornik/STEPwtornik.png}
+\end{center}
+
+\begin{align*}
+SR &= \frac{\Delta V}{\Delta t} = \frac{5V-0V}{270ns} \\ 
+   &= \frac{5}{270}*10^9 \frac{V}{s} \\
+   &\simeq 0.1851 * 10^8 \frac{V}{s} \\
+   &= 18.51 * \frac{V}{10^-6*s} = 18.51 \frac{V}{\mu s}
+\end{align*}
+
+\noindent Układ odpowiedział zgodnie z założeniami na podany skok napięciowy. Na powyższym wykresie napięcia od czasu widoczny jest lekki undershoot/overshoot. Wyliczona wartość SR ($18.5 \frac{V}{\mu s}$) jest zbliżona do wartości typowej\footnote{SR - Slew Rate $V_{ss} = ±15V$, $T_{a} = 25°C$, Min: 8, Typ: 13 $V/\mu s$} ($13 \frac{V}{\mu s}$). Niedokładność lub ewentualne zawyżenie może wynikać z niedokładności pomiaru momentów, gdy napięcie uzyskało 10\% lub 90\% wartości napięcia końcowego (samo zbocze zawiera tylko 23 próbki)
+
+
 
 % ===============           ROZDZIAL 2 
 \newpage
