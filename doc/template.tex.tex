@@ -1,0 +1,61 @@
+\documentclass[oneside]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{multicol}  % <- dodajemy pakiet
+
+\geometry{margin=2.5cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{AGH WEAIiIB MTM}
+\fancyhead[R]{\thepage\ /\ \pageref{LastPage}}
+\fancyhead[C]{\today}
+
+\begin{document}
+
+% --- Tabela tytułowa ---
+\begin{table}[h]
+\centering
+\begin{tabular}{lcr}
+sem. V                  & \textbf{Elektroniczna Aparatura Medyczna} & Autorzy:  \\
+Grupa 1                 & Raport z Laboratorium                     & Krzysztof Domański (419630)\\
+(pon. 16:45)            &                                           & Krzysztof Domański (419630) \\ 
+                        &                                           & \\
+\hline
+\end{tabular}
+\end{table}
+
+% ===============           TYTUL SPRAWOZDANIA
+\begin{center}
+    {\LARGE \textbf{Wtórnik napięciowy, wzmacniacz nieodwracający, wzmacniacz odwracający}}
+\end{center}
+
+% ===============           TRESC 
+\begin{multicols}{2}
+
+% ===============           ROZDZIAL 1 
+\section{ROZDZIAL PIERWSZY}
+Tutaj wstaw treść sprawozdania.
+
+\section{ROZDZIAL DRUGI}
+...
+
+\section{ROZDZIAL TRZECI}
+...
+
+\section{Przebieg pomiarów}
+...
+
+\section{Wyniki}
+...
+
+\section{Wnioski}
+...
+
+\end{multicols}
+
+\end{document}
