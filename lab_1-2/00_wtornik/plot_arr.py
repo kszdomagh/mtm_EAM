@@ -49,7 +49,7 @@ def draw_offset_line(xaxis, yaxis, **kwargs):
 
 
 # PLOT
-plt.figure(figsize=(7, 7))  # width=10, height=6 inches
+plt.figure(figsize=(6, 6))  # width=10, height=6 inches
 plt.xlim(min(yaxis)-1, max(yaxis)+1)
 plt.xlim(min(xaxis)-1, max(xaxis)+1)
 draw_offset_line(xaxis, yaxis, color='purple', label='Offset')
