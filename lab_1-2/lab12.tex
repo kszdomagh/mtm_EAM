@@ -34,7 +34,7 @@ Grupa I                 & Raport z Laboratorium                      & Krzysztof
 
 % ===============           TYTUL SPRAWOZDANIA
 \begin{center}
-    {\LARGE \textbf{Wtórnik napięciowy, wzmacniacz nieodwracający, wzmacniacz odwracający}}
+    {\LARGE \textbf{Wzmacniacze operacyjne w układach \\ LTI (Linear Time-Invariant)}}
 \end{center}
 
 % ===============           TRESC 
@@ -42,24 +42,52 @@ Grupa I                 & Raport z Laboratorium                      & Krzysztof
 
 % ===============           ROZDZIAL 1 
 \section{Wtórnik napięcia}
-\subsection{Teoretyczne wzmocnienie układu}
 
-\subsection{Charakterystyka przejściowa (DC)}
-Pomiary dla charaktyerystyki DC wtórnika zostały wykonane za pomocą oscyloskopu Rigol DS1102. Użyto funkcji \textit{Avg} w sekcji \textbf{Measure}. Pomiary wykonywano dla czasu próbkowania 50 ns. Do generowania przebiegów użyto Rigol DG812.
+\subsection{Układ wtórnika napięciowego}
+Testowany układ wtórnika napięciowego przedstawiono na poniższym schemacie. Układ zasilano napięciem symetrycznym $\pm 10V$ z dwóch połączonych szeregowo zasilaczy laboratoryjnych. Napięcia na wejście podawano w odniesieniu do masy (napięcia $0V$).
 
 \begin{center}
+    \includegraphics[width=0.95\linewidth]{lab_1-2/00_wtornik/PNGwtornik.png}
+\end{center}
+
+\subsection{Teoretyczne wzmocnienie układu}
+\noindent Układ wtórnika napięciowego na wzmacniaczu operacyjnym wykorzystuje fakt że WO\footnote{W0 = wzmacniacz operacyjny} robi wszystko, aby trzymać oba wejścia na tym samym poziomie napięciowym ($V_+=V_-$),\footnote{zakładamy, że prąd wpływający do wejść wzmacniacza jest znikomy oraz offset napięciowy wzmacniacza jest do pominięcia} stąd:
+
+\begin{align*}
+& V_{+} = V_{in} = V_{-} \\ 
+& V_{out} = V_{in} + I_{in}R_{fb} + V_{os} \simeq V_{in} \\
+& \text{stąd: } \frac{V_{out}}{V_{in}} = 1
+\end{align*}
+
+\newcolumn
+\subsection{Charakterystyka przejściowa (DC)}
+Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812.. Użyto funkcji \textbf{Avg} w sekcji \textbf{Measure}. Pomiary wykonywano dla czasu próbkowania 50 ns.
+
+\begin{center}[h]
     \includegraphics[width=0.95\linewidth]{lab_1-2/00_wtornik/DCwtornik.png}
 \end{center}
 
+\noindent Zakres napięć wyjściowych mieścił się w zakresie od $-9.08V$ do $9.67V$. Wyznaczony offset napięciowy: 2mV.
+
 
 \newcolumn
-\subsection{Slew Rate}
-Pomiar SR został wykonane za pomocą oscyloskopu Rigol DS1102. Do generowania przebiegów użyto Rigol DG812. Dane zapisano w postaci pliku \textit{.csv} na pendrive. Obliczenia wykonano na podstawie uzyskanych danych oraz porównano z wartościami z dokumentacji wzmacniacza.
+\subsection{Charakterystyka częstotliwościowa (AC)}
+Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812. Na wejście układu podano sygnał  sinusoidalny o amplitudzie $2V_{pp}$.
 
+\begin{center}
+    \includegraphics[width=0.95\linewidth]{lab_1-2/00_wtornik/ACwtornik.png}
+\end{center}
+
+Wzmocnienie utrzymuje się na poziomie około jedności ($\approx 0dB$) aż do częstotliwości granicznej> W częstotliwości granicznej ($\approx 2 MHz$) występuje lekki "peaking" co jest oznaką braku stabilności (margines fazy $\leq 45\deg $). W nocie katalogowej nie znaleziono informacji o tym czy TL082 jest unity-stable.
+
+
+
+\subsection{Slew Rate}
+Pomiar SR został wykonany za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812. Dane zapisano w postaci pliku \textit{.csv} na pendrive. Obliczenia wykonano na podstawie uzyskanych danych oraz porównano z dokumentacją.
 \begin{center}
     \includegraphics[width=0.95\linewidth]{lab_1-2/00_wtornik/STEPwtornik.png}
 \end{center}
-
+\noindent Obliczenia SR na podstawie wyliczonych danych:
 \begin{align*}
 SR &= \frac{\Delta V}{\Delta t} = \frac{5V-0V}{270ns} \\ 
    &= \frac{5}{270}*10^9 \frac{V}{s} \\
@@ -67,16 +95,77 @@ SR &= \frac{\Delta V}{\Delta t} = \frac{5V-0V}{270ns} \\
    &= 18.51 * \frac{V}{10^-6*s} = 18.51 \frac{V}{\mu s}
 \end{align*}
 
-\noindent Układ odpowiedział zgodnie z założeniami na podany skok napięciowy. Na powyższym wykresie napięcia od czasu widoczny jest lekki undershoot/overshoot. Wyliczona wartość SR ($18.5 \frac{V}{\mu s}$) jest zbliżona do wartości typowej\footnote{SR - Slew Rate $V_{ss} = ±15V$, $T_{a} = 25°C$, Min: 8, Typ: 13 $V/\mu s$} ($13 \frac{V}{\mu s}$). Niedokładność lub ewentualne zawyżenie może wynikać z niedokładności pomiaru momentów, gdy napięcie uzyskało 10\% lub 90\% wartości napięcia końcowego (samo zbocze zawiera tylko 23 próbki)
+\noindent Układ odpowiedział zgodnie z założeniami na podany skok napięciowy. Na powyższym wykresie napięcia od czasu widoczny jest lekki undershoot/overshoot. Wyliczona wartość SR ($18.51 \frac{V}{\mu s}$) jest zbliżona do wartości typowej\footnote{SR - Slew Rate $V_{ss} = ±15V$, $T_{a} = 25°C$, Min: 8, Typ: 13 $V/\mu s$} ($13 \frac{V}{\mu s}$). Niedokładność lub ewentualne zawyżenie może wynikać z niedokładności pomiaru momentów, gdy napięcie uzyskało 10\% lub 90\% wartości napięcia końcowego (samo zbocze zawiera tylko 23 próbki).
+
+
+\subsection{Wpływ zmiany napięcia zasilania na sygnał}
+Pomiary zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812. Dane zapisano w postaci dwóch plików \textit{.csv} na pendrive. Pomiary wykonano dla napięć zasilania $\pm10V$ oraz $\pm3.6V$.
+\begin{center}
+    \includegraphics[width=0.95\linewidth]{lab_1-2/00_wtornik/SUPPLYwtornik.png}
+\end{center}
 
 
 
 % ===============           ROZDZIAL 2 
 \newpage
 \section{Wzmacniacz nieodwracający}
+\subsection{Układ wzmacniacza nieodwracającego}
+Testowany układ wzmacniacza nieodwracającego przedstawiono na poniższym schemacie. Układ zasilano napięciem symetrycznym $\pm 10V$ z dwóch połączonych szeregowo zasilaczy laboratoryjnych. Napięcia na wejście podawano w odniesieniu do masy (napięcia $0V$).
+
+\begin{center}
+    \centering
+    \includegraphics[width=0.95\linewidth]{lab_1-2/01_nodwracajacy/nodwr.png}
+\end{center}
 \subsection{Teoretyczne wzmocnienie układu}
-\subsection{Charakterystyka przejściowa}
-\subsection{Charakterystyka częstotliwościowa}
+Układ wzmacniacza nieodwracającego na wzmacniaczu operacyj-
+nym wykorzystuje fakt że WO "próbuje trzymać" oba wejścia (odwracające i nieodwracające) na tym samym potencjale, stąd: $V_{in} = V_+ = V_-$. Dokładne obliczenia wzmocnienia napięciowego przedstawiono poniżej:
+\vspace{-15pt}
+\begin{align*}
+    V_{in}&= V_+ = V_- \\
+    V_{R_2} &= V_- = I_{R_2}*R_2 \quad \text{stąd:} \space I_{R_2} = \frac{V_{in}}{R_2} \\
+    I_{R_1} &= I_{R_2} \\
+    V_{R1} &= I_{R_1} * R_{1} \\
+    V_{out} &= V_{R_2} +V_{R_1} = V_{in} + I_{R_1} * R_1 = V_{in} + \frac{V_{in}}{R_2} * R_1 \\
+    &= V_{in} * (1+ \frac{R_1}{R_2}) \quad \text{stąd:}\\
+    \frac{V_{out}}{V_{in}} &= (1+ \frac{R_1}{R_2}) \\
+\end{align*}
+
+\noindent Wzmocnienie napięciowe dane jest przez stosunek dwóch rezystorów w sumie z jednością\footnote{Układ wtórnika napięciowego jest specjalną odmianą wzmacniacza nieodwracającego, gdzie $R_1 \rightarrow 0$ oraz $R_1 \rightarrow \infty$.}. W powyższych obliczeniach nie wzięto pod uwagę skończonego pasma wzmocnienia dla WO. Na szczęście WO posiada parametr GBW (gain-bandwidth ratio), który łątwo pozwala nam oszacować pasmo dla danego ustawionego przez stosunek rezystorów wzmocnienia.
+
+\begin{align*}
+    GBW &= Gain * BW = (1+ \frac{R_1}{R_2}) * BW = const 
+\end{align*}
+
+\noindent Występuje tak zwana wymiana pasma na wzmocnienie.
+
+
+\subsection{Charakterystyka przejściowa (DC)}
+
+Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812.
+\begin{center}
+    \includegraphics[width=0.95\linewidth]{lab_1-2/01_nodwracajacy/DCnodwracajacy2.png}
+\end{center}
+\noindent Układ w praktyce działa tak jak zakładano w teoretycznych rozważaniach. Wzmocnienie układu wynosi $\approx 101$.
+
+\subsection{Charakterystyka częstotliwościowa (AC)}
+
+Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812. Na wejście ukłądu podano  przebieg sinusoidalny o amplitudzie $V = 60mV_{pp}$.
+
+\begin{center}
+    \includegraphics[width=0.95\linewidth]{lab_1-2/01_nodwracajacy/ACnodwracajacy.png}
+\end{center}
+
+Układ spełnia założenia teoretyczne - następuje wymiana wzmocnienia na pasmo według wzoru:
+\vspace{-10pt}
+\begin{align*}
+    Gain*BW &= 101 [\frac{V}{V}] * 55[kHz] = 5 \space 555 \space kHz \approx 5.6 \space MHz \\
+    GBW_{\text{datasheet}} &=  4 \space MHz
+\end{align*}
+
+\noindent GBW z noty katalogowej oraz iloraz wzmocnienia oraz pasma są zbliżone.
+
+
+
 
 % ===============           ROZDZIAL 3 
 \newpage
