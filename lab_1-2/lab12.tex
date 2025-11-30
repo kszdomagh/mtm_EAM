@@ -26,13 +26,14 @@
 \begin{tabular}{lcr}
 sem. V                  & \textbf{Elektroniczna Aparatura Medyczna} & Autorzy:  \\
 Grupa I                 & Raport z Laboratorium                      & Krzysztof Domański (419630)\\
-(pon. 13:15)            &                                           & Igor Głowacz (XXXXXX) \\ 
+(pon. 13:15)            &                                           & Igor Głowacz (419808) \\ 
                         &                                           & \\
 \hline
 \end{tabular}
 \end{table}
 
 % ===============           TYTUL SPRAWOZDANIA
+\vspace{-20pt}
 \begin{center}
     {\LARGE \textbf{Wzmacniacze operacyjne w układach \\ LTI (Linear Time-Invariant)}}
 \end{center}
@@ -59,15 +60,21 @@ Testowany układ wtórnika napięciowego przedstawiono na poniższym schemacie. 
 & \text{stąd: } \frac{V_{out}}{V_{in}} = 1
 \end{align*}
 
+\noindent Układ wtórnika napięciowego jest specjalną odmianą wzmacniacza nieodwracającego, gdzie rezystancja z wejścia odwracającego do masy dąży do nieskończoności, a rezystancja w sprzężeniu zwrotnym ma zazwyczaj mniejszą, skończoną wartość, stąd wzmocnienie jest około rózne jedności.
+
 \newcolumn
 \subsection{Charakterystyka przejściowa (DC)}
-Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812.. Użyto funkcji \textbf{Avg} w sekcji \textbf{Measure}. Pomiary wykonywano dla czasu próbkowania 50 ns.
+Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812. Użyto funkcji \textbf{Avg} w sekcji \textbf{Measure} oscyloskopu. Na wejście podawano napięcia z zakresu od -10V do 10V z krokiem 0.5V.
 
-\begin{center}[h]
+\begin{center}
     \includegraphics[width=0.95\linewidth]{lab_1-2/00_wtornik/DCwtornik.png}
 \end{center}
 
-\noindent Zakres napięć wyjściowych mieścił się w zakresie od $-9.08V$ do $9.67V$. Wyznaczony offset napięciowy: 2mV.
+\noindent Zakres napięć wyjściowych mieścił się w zakresie od $-9.08V$ do $9.67V$. Wyznaczony offset napięciowy dla podanego napięcia 0V wynosił  2mV. Jest to wartość mieszcząca się podanym w nocie katalogowej napięciu niezrównoważenia (Typ. 5mV oraz Max 15mV). 
+
+\vspace{10pt}
+
+\noindent Na charakterystyce przejściowej widoczny jest także efekt inwersji dla dwóch punktów pomiarowych (napięcia wejściowe -10V oraz -9.5V). Jest to zgodne z informacjami zawartymi w sekcji \textbf{APPLICATION HINTS} na stronie 10 noty katalogowej wzmacniacza TL082: \textbf{Exceeding the negative common-mode limit on either input will cause a reversal of the phase to the output and force the amplifier output to the corresponding high or low state}.
 
 
 \newcolumn
@@ -106,6 +113,8 @@ Pomiary zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Ri
 
 
 
+
+
 % ===============           ROZDZIAL 2 
 \newpage
 \section{Wzmacniacz nieodwracający}
@@ -128,23 +137,27 @@ nym wykorzystuje fakt że WO "próbuje trzymać" oba wejścia (odwracające i ni
     V_{R1} &= I_{R_1} * R_{1} \\
     V_{out} &= V_{R_2} +V_{R_1} = V_{in} + I_{R_1} * R_1 = V_{in} + \frac{V_{in}}{R_2} * R_1 \\
     &= V_{in} * (1+ \frac{R_1}{R_2}) \quad \text{stąd:}\\
-    \frac{V_{out}}{V_{in}} &= (1+ \frac{R_1}{R_2}) \\
+    \frac{V_{out}}{V_{in}} &= 1+ \frac{R_1}{R_2} = 1 + \frac{10k}{100} = 101 \approx 100 [\frac{V}{V}] = 40 \text{dB}
+    \\
 \end{align*}
 
-\noindent Wzmocnienie napięciowe dane jest przez stosunek dwóch rezystorów w sumie z jednością\footnote{Układ wtórnika napięciowego jest specjalną odmianą wzmacniacza nieodwracającego, gdzie $R_1 \rightarrow 0$ oraz $R_1 \rightarrow \infty$.}. W powyższych obliczeniach nie wzięto pod uwagę skończonego pasma wzmocnienia dla WO. Na szczęście WO posiada parametr GBW (gain-bandwidth ratio), który łątwo pozwala nam oszacować pasmo dla danego ustawionego przez stosunek rezystorów wzmocnienia.
+\vspace{-10pt}
 
+\noindent Wzmocnienie napięciowe dane jest przez stosunek dwóch rezystorów w sumie z jednością. W powyższych obliczeniach nie wzięto pod uwagę skończonego pasma wzmocnienia dla WO. Na szczęście WO posiada parametr GBW (gain-bandwidth ratio), który łątwo pozwala nam oszacować pasmo dla danego ustawionego przez stosunek rezystorów wzmocnienia.
+\vspace{-10pt}
 \begin{align*}
-    GBW &= Gain * BW = (1+ \frac{R_1}{R_2}) * BW = const 
+    GBW &= Gain * BW = (1+ \frac{R_1}{R_2}) * BW = const \\
+    BW &= \frac{GBW}{Gain} = \frac{4\text{MHz}}{101 \frac{V}{V}} \approx 40\text{kHz}
 \end{align*}
-
+\vspace{-10pt}
 \noindent Występuje tak zwana wymiana pasma na wzmocnienie.
 
 
 \subsection{Charakterystyka przejściowa (DC)}
 
-Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812.
+Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812. Na wejście układu podano napięcia stałe co 100mV, a w interesującej nas części charakterystyki (od -100mV do 100mV) krok zmniejszono do 10mV.
 \begin{center}
-    \includegraphics[width=0.95\linewidth]{lab_1-2/01_nodwracajacy/DCnodwracajacy2.png}
+    \includegraphics[width=0.9\linewidth]{lab_1-2/01_nodwracajacy/DCnodwracajacy2.png}
 \end{center}
 \noindent Układ w praktyce działa tak jak zakładano w teoretycznych rozważaniach. Wzmocnienie układu wynosi $\approx 101$.
 
@@ -153,7 +166,7 @@ Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generator
 Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812. Na wejście ukłądu podano  przebieg sinusoidalny o amplitudzie $V = 60mV_{pp}$.
 
 \begin{center}
-    \includegraphics[width=0.95\linewidth]{lab_1-2/01_nodwracajacy/ACnodwracajacy.png}
+    \includegraphics[width=0.9\linewidth]{lab_1-2/01_nodwracajacy/ACnodwracajacy.png}
 \end{center}
 
 Układ spełnia założenia teoretyczne - następuje wymiana wzmocnienia na pasmo według wzoru:
@@ -163,18 +176,63 @@ Układ spełnia założenia teoretyczne - następuje wymiana wzmocnienia na pasm
     GBW_{\text{datasheet}} &=  4 \space MHz
 \end{align*}
 
-\noindent GBW z noty katalogowej oraz iloraz wzmocnienia oraz pasma są zbliżone.
+\noindent GBW z noty katalogowej oraz iloraz wzmocnienia oraz pasma są zbliżone. Różnica może wynikać z niedokłądności podanego parametry GBW. W nocie katalogowej nie podane zostały wartości maksymalna ani minimalna, podano tylko wartość typową.
 
 % ===============           ROZDZIAL 3 
 \newpage
 \section{Filtr dolnoprzepustowy (układ całkujący) oparty o wzmacniacz odwracający}
+\subsection{Układ całkujący na wzmacniaczu operacyjnym}
+\begin{center}
+    \centering
+    \includegraphics[width=0.95\linewidth]{lab_1-2/01_odwracajacy/odwr.png}
+\end{center}
+
+\noindent Układ wzmacniacza odwracającego na wzmacniaczu operacyj-
+nym wykorzystuje fakt że WO na wejściu odwracającym trzyma punkt "masy pozornej", stąd: $V_{-} = 0V$. Dodatkowo w pętlę sprzężenia wpięty został kondensator który powoduje dolnoprzepustowe/całkujące zachowanie układu.
+
 \subsection{Teoretyczne wzmocnienie układu}
-\subsection{Charakterystyka przejściowa}
-\subsection{Charakterystyka częstotliwościowa}
+\noindent Dokładne obliczenia wzmocnienia napięciowego oraz analiza lokacji biegunów przedstawiona została poniżej:
+
+\begin{align*}
+    I_{R_2} &= \frac{R_2}{V_{in}} \\
+    I_f &= I_{R_2} \\
+    I_f &= \frac{R_1||\frac{1}{sC_1}}{-V_{out}}= \frac{\frac{R_1}{1+ sR_1C_1}}{-V_{out}} \\
+    \frac{R_2}{V_{in}} &= \frac{\frac{R_1}{1+ sR_1C_1}}{-V_{out}} \\
+    \frac{V_{out}}{V_{in}} &= \frac{\frac{R_1}{1+ sR_1C_1}}{-R_2} = -\frac{R_1}{R_2}*(\frac{1}{1+ sR_1C_1}) \approx \\
+    &\approx -\frac{R_1}{R_2} = -10 \frac{V}{V} \\= 20 \space \text{dB} \\
+\end{align*}
+
+\noindent Wzmocnienie układu w niskich częstotliwościach dany jest przez stosunek rezystorów $R_1$ oraz $R_2$ ze znakiem minus. Układ posiada także jeden biegun w $\omega_{LP} = - \frac{1}{R_1 C_1}$. Jest to wzmacniacz z filtrem dolnoprzepustowym o częstotliwości granicznej danej przez rezystor $R_1$ oraz kondensator $C_1$.
+
+\subsection{Charakterystyka przejściowa (DC)}
+
+Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812. Na wejście układu podano napięcia stałe co $500mV$, a w interesującej nas części charakterystyki (od -1V do 1V) krok zmniejszono do $100mV$. 
+
+\begin{center}
+    \centering
+    \includegraphics[width=0.95\linewidth]{lab_1-2//01_odwracajacy/DCodwr.png}
+\end{center}
+
+Wejściowy offset napięciowy zmierzono na poziomie 80mV.
+
+\subsection{Charakterystyka częstotliwościowa (AC)}
+Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generatora Rigol DG812. Na wejście ukłądu podano  przebieg sinusoidalny o amplitudzie $V = 60mV_{pp}$.
+\begin{center}
+    \centering
+    \includegraphics[width=0.9\linewidth]{lab_1-2//01_odwracajacy/odwr_AC.png}
+\end{center}
+\vspace{-10pt}
+\noindent Podana charakterystyka zgadza się z założeniami teoretycznymi. Wzmocnienie układu w niskich częstotliwościach wynosi $20\text{dB} = 10$ co jest stosunkiem użytych rezystorów $R_1= 100 \text{kOhm oraz } R_2=10\text{kOhm}$. Układ działa jak filtr dolnoprzepustowy dla częstotliwości -3db: $f_g = 18\space \text{Hz}$. Teoretyczna częstotlwiość granicza została obliczona poniżej:
+\vspace{-10pt}
+\begin{align*}
+    f_{gT} = \frac{1}{2 \pi R_1 C_1} = \frac{1}{2 \pi * 100\text{k} * 100\text{n}} \approx 15.91 \space \text{Hz} 
+\end{align*}
+
+\noindent Wszelakie rozbieżności pomiędzy wyznaczoną teoretyczną częstotliwością graniczną a pomiarami mogą wynikać z niedokładności użytych komponentów. Pomimo tego wartości zmierzone a teoretycznie nie odbiegają od siebie w znaczącym stopniu.
 \subsection{Przykładowe przebiegi}
 
+
 % ===============           ROZDZIAL 3 
-\section{Wnioski}
 
 \end{multicols}
 
