@@ -1,0 +1,179 @@
+\documentclass[oneside]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\geometry{margin=2cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{AGH WEAIiIB MTM}
+\fancyhead[R]{\thepage\ /\ \pageref{LastPage}}
+\fancyhead[C]{\today}
+
+\begin{document}
+
+% --- Tabela tytułowa ---
+\begin{table}[h]
+\centering
+\begin{tabular}{lcr}
+sem. V                  & \textbf{Elektroniczna Aparatura Medyczna} & Autorzy:  \\
+Grupa I                 & Raport z projektu                      & Krzysztof Domański (419630)\\
+(pon. 13:15)            &                                           & Igor Głowacz (419808) \\ 
+                        &                                           & \\
+\hline
+\end{tabular}
+\end{table}
+
+% ===============           TYTUL SPRAWOZDANIA
+\vspace{-15pt}
+\begin{center}
+    {\LARGE \textbf{Wzmacniacz biopotencjałów}}
+\end{center}
+
+% ===============           TRESC 
+\begin{multicols}{2}
+
+
+
+
+% ===============           TABLE OF CONTENTS
+\tableofcontents
+
+% ===============           ROZDZIAL 1 
+\newcolumn
+\section{Wprowadzenie}
+
+
+\noindent Celem projektu jest skonstruowanie wzmacniacza biopotencjałów, składającego się ze:
+\begin{itemize}
+    \item stopnia wejściowego opartego na specjalizowanym wzmacniaczu pomiarowym o konfigurowalnym wzmocnieniu,
+
+    \item wstępnego filtru pasmowo-przepustowego,
+
+    \item bardziej selektywnego filtru pasmowo-przepustowego,
+
+    \item filtru typu "notch".
+\end{itemize}
+
+\noindent Nasza grupa otrzymała wariant drugi selektywnego filtru pasmowo-przepustowego, tj. filtr typu \textbf{Butterworth} dla pasma \textbf{1Hz – 300Hz}.
+
+\begin{center}
+    \includegraphics[width=0.95\linewidth]{proj//png/ogolny.png}
+    Schemat blokowy projektu wzmacniacza biopotencjałów.
+\end{center}
+
+
+
+
+
+
+
+
+
+% ===============           ROZDZIAL 1 
+\clearpage
+\section{Konstrukcja pierwszego filtru pasmowo przepustowego}
+
+
+
+
+
+
+
+
+
+% ===============           ROZDZIAL 2 
+\clearpage
+\section{Konstrukcja drugiego filtru pasmowo przepustowego}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ===============           ROZDZIAL 3 
+\clearpage
+\section{Konstrukcja filtru typu notch}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ===============           ROZDZIAL 4 
+\clearpage
+\section{Montaż i konfiguracja stopnia wejściowego}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ===============           ROZDZIAL 5 
+\clearpage
+\section{Charakteryzacja całego toru pomiarowego}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ===============           ROZDZIAL 6 
+\clearpage
+\section{Prezentacja działania wzmacniacza biopotencjałów}
+
+
+\end{multicols}
+
+\end{document}
