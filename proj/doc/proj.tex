@@ -39,7 +39,6 @@ Grupa I                 & Raport z projektu                      & Krzysztof Dom
 \end{center}
 
 % ===============           TRESC 
-\begin{multicols}{2}
 
 
 
@@ -48,27 +47,23 @@ Grupa I                 & Raport z projektu                      & Krzysztof Dom
 \tableofcontents
 
 % ===============           ROZDZIAL 1 
-\newcolumn
 \section{Wprowadzenie}
-
-
 \noindent Celem projektu jest skonstruowanie wzmacniacza biopotencjałów, składającego się ze:
 \begin{itemize}
     \item stopnia wejściowego opartego na specjalizowanym wzmacniaczu pomiarowym o konfigurowalnym wzmocnieniu,
-
     \item wstępnego filtru pasmowo-przepustowego,
-
     \item bardziej selektywnego filtru pasmowo-przepustowego,
-
     \item filtru typu "notch".
 \end{itemize}
 
 \noindent Nasza grupa otrzymała wariant drugi selektywnego filtru pasmowo-przepustowego, tj. filtr typu \textbf{Butterworth} dla pasma \textbf{1Hz – 300Hz}.
 
-\begin{center}
-    \includegraphics[width=0.95\linewidth]{proj//png/ogolny.png}
-    Schemat blokowy projektu wzmacniacza biopotencjałów.
-\end{center}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{proj//png/ogolny.png}
+    \caption{Schemat blokowy projektu wzmacniacza biopotencjałów.}
+\end{figure}
+
 
 
 
@@ -80,11 +75,50 @@ Grupa I                 & Raport z projektu                      & Krzysztof Dom
 
 % ===============           ROZDZIAL 1 
 \clearpage
+\twocolumn
 \section{Konstrukcja pierwszego filtru pasmowo przepustowego}
 
+Pierwszy filtr pasmowo-przepustowy ma posiadać wzmocnienie 10 oraz pasmo przepustowe w zakresie od 0.5 Hz do 1 kHz.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{proj/png/1BP_draw.png}
+    \caption{Enter Caption}
+\end{figure}
+
+\subsection{Wstępne obliczenia}
+\noindent Pierwszy filtr pasmowo-przepustowy posiada dwa bieguny, jeden biegun związany jest ze stałą czasową związaną z $C_1$ oraz $R_1$ na wejściu nieodwracającym wzmacniacza operacyjnego. Drugi biegun związany jest z komponentami $R_3$ oraz $C_2$. Wartości idealne zostały podane w treści instrukcji do projektu.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+                     & $R_1$   & $R_2$ & $R_3$ & $C_1$ & $C_2$  \\
+    \hline
+    Idealna wartość: & 330k    & 1k    &  100k &  1uF  & 3.3nF  \\
+    \hline
+    Użyta wartość:   & 326k    & 984    &  99k &  0.9uF  & 3.1nF  \\
+    \hline
+    \end{tabular}
+    \caption{Wartości komponentów dla pierwszego filtru}
+\end{table}
+\noindent Obliczenia dla częstotliwości granicznych:
+\begin{align*}
+    f_d &= \frac{1}{2\pi C_1R_1} = \frac{1}{2\pi * 1u  * 330k} = 0.4822 \text{ Hz} \approx 0.5 \text{ Hz} \\
+    f_g &= \frac{1}{2\pi C_2 R_3} = \frac{1}{2\pi * 3.3n  * 100k} = 488.28 \text{ Hz} \approx 500 \text{ Hz}
+    \\
+\end{align*}
+
+\noindent Poniżej przedstawiono symulowaną charakterystykę filtru z zaznaczonymi punktami -3db.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{proj//png/BP1_sim.png}
+    \caption{Symulowana charakerystyka filtru}
+\end{figure}
 
 
-
+\newpage
+\subsection{Przebiegi uzyskane w czasie symulacji oraz pomiarów}
 
 
 
@@ -174,6 +208,5 @@ Grupa I                 & Raport z projektu                      & Krzysztof Dom
 \section{Prezentacja działania wzmacniacza biopotencjałów}
 
 
-\end{multicols}
 
 \end{document}
