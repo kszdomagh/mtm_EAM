@@ -41,6 +41,7 @@ Grupa I                 & Raport z Laboratorium                      & Krzysztof
 % ===============           TRESC 
 \begin{multicols}{2}
 
+
 % ===============           ROZDZIAL 1 
 \section{Wtórnik napięcia}
 
@@ -233,7 +234,34 @@ Pomiary dla zostały wykonane za pomocą oscyloskopu Rigol DS1102 oraz generator
 
 \subsection{Przykładowe przebiegi}
 
-Na wejście układu podano 
+Na wejście układu podano sygnał prostokątny o amplitudzie $100mV_{pp}$ o częstotliwości:
+\vspace{15pt}
+
+\noindent a) niższej niż częstotliwość graniczna filtra: 10 Hz
+\begin{center}
+    \centering
+    \includegraphics[width=0.9\linewidth]{lab_1-2/02_odwracajacy/10Hz.png}
+\end{center}
+
+\noindent b) nieco wyższej niż częstotliwość graniczna filtra: 20 Hz
+\begin{center}
+    \centering
+    \includegraphics[width=0.9\linewidth]{lab_1-2/02_odwracajacy/20Hz.png}
+\end{center}
+
+
+\noindent c) dużo większej niż częstotliwość filtra: 100 Hz
+\begin{center}
+    \centering
+    \includegraphics[width=0.9\linewidth]{lab_1-2/02_odwracajacy/100Hz.png}
+\end{center}
+
+\noindent Układ całkujący wykorzystuje fakt, iż dla stałych czasowych $\tau >> \tau_{RC}$ ładowanie oraz rozładowywanie kondensatora przypomina całkowanie danego przebiegu. W miarę zmniejszania się częstotliwości sygnału do częstotliwości granicznej (danej przez R orac C wpięte w pętlę sprzężenia zwrotnego) widać iż podawany na wejście przebieg prostokątny przypomina ładowanie oraz rozładowywanie kondensatora, zamiast matematyczną operację całkowania.
+
+\newcolumn 
+\subsection{Wnioski z ćwiczenia}
+
+\noindent W pierwszej części laboratorium zweryfikowano teoretyczne rozważania, dotyczące układu wtórnika oraz
 
 
 % ===============           ROZDZIAL 3 
