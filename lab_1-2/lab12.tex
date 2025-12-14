@@ -200,7 +200,7 @@ nym wykorzystuje fakt że WO na wejściu odwracającym trzyma punkt "masy pozorn
     I_f &= \frac{R_1||\frac{1}{sC_1}}{-V_{out}}= \frac{\frac{R_1}{1+ sR_1C_1}}{-V_{out}} \\
     \frac{R_2}{V_{in}} &= \frac{\frac{R_1}{1+ sR_1C_1}}{-V_{out}} \\
     \frac{V_{out}}{V_{in}} &= \frac{\frac{R_1}{1+ sR_1C_1}}{-R_2} = -\frac{R_1}{R_2}*(\frac{1}{1+ sR_1C_1}) \approx \\
-    &\approx -\frac{R_1}{R_2} = -10 \frac{V}{V} \\= 20 \space \text{dB} \\
+    \text{(for DC)} &\approx -\frac{R_1}{R_2} = -10 \frac{V}{V} \\= 20 \space \text{dB} \\
 \end{align*}
 
 \noindent Wzmocnienie układu w niskich częstotliwościach dany jest przez stosunek rezystorów $R_1$ oraz $R_2$ ze znakiem minus. Układ posiada także jeden biegun w $\omega_{LP} = - \frac{1}{R_1 C_1}$. Jest to wzmacniacz z filtrem dolnoprzepustowym o częstotliwości granicznej danej przez rezystor $R_1$ oraz kondensator $C_1$.
@@ -261,7 +261,22 @@ Na wejście układu podano sygnał prostokątny o amplitudzie $100mV_{pp}$ o cz�
 \newcolumn 
 \subsection{Wnioski z ćwiczenia}
 
-\noindent W pierwszej części laboratorium zweryfikowano teoretyczne rozważania, dotyczące układu wtórnika oraz
+\subsubsection{Wtórnik napięcia}
+
+W pierwszej części laboratorium zweryfikowano teoretyczne rozważania, dotyczące układu wtórnika, przeprowadzono analizę charakterystyki przejściowej (DC), częstotliwościowej (AC), dokonano pomiarów parametru "Slew Rate" oraz zmierzono wpływ napięcia zasilania na sygnał - zaobserwowano efekt inwersji związany z przekroczeniem limitu napięcia typu common na wejściach.
+
+\vspace{5pt}
+
+Nasze rozważania teoretyczne/symulacje zgadzają się z wynikami uzyskanymi podczas pomiarów. Symulacje wykonane zostały w programie LTspice po odpowiednim skonfigurowaniu modelu \textit{UniversalOpamp2} aby zgadzał się z parametrami wzmacniacza TL082 z noty katalogowej.
+
+\subsubsection{Wzmacniacz nieodwracający}
+
+\noindent W tej części ćwiczenia przeprowadzono analizę teoretyczną dla układu wzmacniacza nieodwracającego o wzmocnieniu 100 (40dB). Wyznaczono charakterystyki DC oraz AC. Zaobserwowano wymianę wzmocnienia an pasmo.
+
+\subsubsection{Filtr dolnoprzepustowy oparty o wzmacniacz
+odwracający}
+
+\noindent W ostatniej części ćwiczenia przeprowadzono analizę teoretyczną dla filtru dolnoprzepustowego I-rzędu o wzmocnieniu 10 oraz częstotliwości granicznej ~18Hz. Wyznaczono charakterystyki DC oraz AC. Zauważono, że układ całkuje przebiegi wejściowe dla częstotliwości znacznie wyższych od częstotliwości granicznej filtru.
 
 
 % ===============           ROZDZIAL 3 
